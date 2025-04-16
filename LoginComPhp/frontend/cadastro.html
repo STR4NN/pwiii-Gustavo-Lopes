@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+    function validarSenha() {
+        const senha = document.getElementById("senha").value;
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8}$/;
+        if (!regex.test(senha)) {
+            alert("A senha deve ter 8 caracteres, letra maiúscula, minúscula, número e símbolo.");
+            return false;
+        }
+        return true;
+    }
+    </script>
+</head>
+<body>
+    <form action="../cadastrar.php" method="POST" onsubmit="return validarSenha()">
+        <h3>Cadastro</h3>
+        <input type="text" name="nome" placeholder="Nome completo" required>
+        <input type="text" name="login" placeholder="Login (até 10 letras)" maxlength="10" required>
+        <input type="password" id="senha" name="senha" placeholder="Senha" required>
+        <input type="email" name="email" placeholder="Email principal" required>
+        <input type="email" name="email2" placeholder="Email secundário">
+        <button type="submit">Cadastrar</button>
+        <a href="index.html">Voltar para login</a>
+    </form>
+</body>
+</html>
